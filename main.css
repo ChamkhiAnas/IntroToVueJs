@@ -1,0 +1,19 @@
+.product-image{
+    border: 1px solid rgba(5, 5, 5, 0.1) ;
+    height: 410px;
+    width: 410px;
+}
+
+.product-image>img{
+    height: 400px;
+    width: 400px;
+}
+
+.product{
+    display: grid;
+    grid-template-columns: 0.8fr 1fr;
+}
+
+.product-info{
+    text-align: left;
+}
