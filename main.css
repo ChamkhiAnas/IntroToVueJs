@@ -1,12 +1,12 @@
 .product-image{
     border: 1px solid rgba(5, 5, 5, 0.1) ;
-    height: 410px;
-    width: 410px;
+    height: 310px;
+    width: 310px;
 }
 
 .product-image>img{
-    height: 400px;
-    width: 400px;
+    height: 300px;
+    width: 300px;
 }
 
 .product{
