@@ -132,7 +132,7 @@ computed:{
 
 Vue.component('product-review', {
     template: `
-
+<p>We Still need the validators</p>
     <form class="review-form" @submit.prevent="onSubmit">
     <p>
       <label for="name">Name:</label>
