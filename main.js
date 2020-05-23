@@ -43,7 +43,8 @@ Vue.component('product',{
        </div>
 
        <br>
-       <product-tabs></product-tabs>
+
+       <product-tabs :reviews="reviews" @TransmiReview="addReview" ></product-tabs>
 
        <br>
 
@@ -167,6 +168,7 @@ Vue.component('product-review', {
                 review:this.review,
                 rating:this.rating
             }
+            console.log('hada product review',productReview)
             this.$emit('review-submiting',productReview)
             this.name=null,
             this.review=null,
@@ -185,14 +187,19 @@ Vue.component('product-review', {
 
 
 Vue.component('product-tabs',{
+    props:{
+        reviews:{
+            type:Array,
+            required:true
+        }
+    },
     template:`
     <div>
         <span class="tab" 
         :class="{activeTab:selectedTab===tab}"
         v-for="(tab, index) in tabs" 
         :key="index"
-        @click="selectedTab=tab"
-        @click="printOut">
+        @click="selectedTab=tab">
         {{ tab }}</span>
 
         <div>
@@ -207,25 +214,25 @@ Vue.component('product-tabs',{
         </ul>
     </div>
 
-   <div>
-         <product-review @review-submiting="addReview"><product-review> 
-   <div>
+         <product-review @review-submiting="TransmiReview"><product-review> 
 
 
     </div>
   `,
     data(){
         return {
-            tabs: ['Reviews', 'Make a Review']   ,
-            selectedTab:'Reviews'  
-
+            tabs: ['Reviews', 'Make a Review'],
+            selectedTab:'Reviews',  
         }
     },
     methods:{
 
-        printOut:function(){
-            console.log(this.selectedTab);
-        },
+     
+        TransmiReview:function(productReview){
+            console.log("hadi data",productReview)
+            this.$emit('TransmiReview',productReview)
+        }
+
 
     }
 })
