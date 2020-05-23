@@ -202,20 +202,26 @@ Vue.component('product-tabs',{
         @click="selectedTab=tab">
         {{ tab }}</span>
 
-        <div>
-        <h2>Reviews</h2>
-        <p v-if="!reviews.length">There are no reviews yet.</p>
-        <ul>
-            <li v-for="review in reviews">
-            <p>{{ review.name }}</p>
-            <p>Rating: {{ review.rating }}</p>
-            <p>{{ review.review }}</p>
-            </li>
-        </ul>
-    </div>
 
+        <br>
+
+        <br>
+
+                <div v-show="selectedTab===tabs[0]">
+                <h2>Reviews</h2>
+                <p v-if="!reviews.length">There are no reviews yet.</p>
+                <ul>
+                    <li v-for="review in reviews">
+                    <p>{{ review.name }}</p>
+                    <p>Rating: {{ review.rating }}</p>
+                    <p>{{ review.review }}</p>
+                    </li>
+                </ul>
+                </div>
+
+                <div v-show="selectedTab===tabs[1]"> 
          <product-review @review-submiting="TransmiReview"><product-review> 
-
+                </div>
 
     </div>
   `,
@@ -228,9 +234,9 @@ Vue.component('product-tabs',{
     methods:{
 
      
-        TransmiReview:function(productReview){
-            console.log("hadi data",productReview)
-            this.$emit('TransmiReview',productReview)
+        TransmiReview:function(reviewsData){
+            console.log("hadi data",reviewsData)
+            this.$emit('TransmiReview',reviewsData)
         }
 
 
