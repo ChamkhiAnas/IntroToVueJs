@@ -27,12 +27,19 @@ var app=new Vue({
     },
 
     methods:{
-            AddTocart: function(){
+            IncrCart: function(){
             this.cart+=1;
             },
+            DecrCart: function(){
+                if (this.cart>0){
+                    this.cart-=1;
+                }
+                else this.cart=0
+                },
             updateProduct:function(pic){
                 this.Image=pic
-            }
+            },
+
         }
   
 

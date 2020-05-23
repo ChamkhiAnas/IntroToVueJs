@@ -19,12 +19,12 @@
 }
 .cartContainer{
     display: grid;
-    grid-template-columns: 0.2fr 1fr;
+    grid-template-columns: 0.4fr 0.4fr 1fr;
     }
 .cart{
 
     margin-left: 10px;
-    width: 10%;
+    width: 20%;
     border: 1px solid rgba(5, 5, 5, 0.1);
     height: 39px;
     text-align: center;
@@ -32,3 +32,6 @@
 
 }
 
+.btn {
+    margin-left: 5px;
+}

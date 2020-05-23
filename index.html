@@ -35,7 +35,9 @@
                 </div>
             
                 <div class="cartContainer">
-               <button v-on:click="AddTocart" type="button" class="btn btn-primary">Add to cart</button>
+               <button v-on:click="IncrCart" type="button" class="btn btn-primary">Add to cart</button>
+               <button v-on:click="DecrCart" type="button" class="btn btn-danger">Remove from cart</button>
+
                 <div class="cart">
                     <p>Cart({{cart}})</p>
                 </div>
