@@ -54,8 +54,7 @@ Vue.component('product',{
         </div>
 
        <div>
-       <product-review @review-submiting="addReview"><product-review> 
-
+             <product-review @review-submiting="addReview"><product-review> 
        <div>
   
         </div>
@@ -132,16 +131,15 @@ computed:{
 
 Vue.component('product-review', {
     template: `
-<p>We Still need the validators</p>
     <form class="review-form" @submit.prevent="onSubmit">
     <p>
       <label for="name">Name:</label>
-      <input id="name" v-model="name" placeholder="name">
+      <input id="name" v-model="name" placeholder="name" required>
     </p>
     
     <p>
       <label for="review">Review:</label>      
-      <textarea id="review" v-model="review"></textarea>
+      <textarea  required id="review" v-model="review"></textarea>
     </p>
     
     <p>
@@ -156,7 +154,7 @@ Vue.component('product-review', {
     </p>
         
     <p>
-      <input type="submit" value="Submit">  
+      <input required type="submit" value="Submit">  
     </p>    
   
   </form>
@@ -167,10 +165,12 @@ Vue.component('product-review', {
         name: null,
         review:null,
         rating:null,
+        errors: [],
       }
     },
     methods:{
         onSubmit(){
+            if(this.name && this.review && this.rating){
             let productReview={
                 name:this.name,
                 review:this.review,
@@ -181,6 +181,14 @@ Vue.component('product-review', {
             this.review=null,
             this.rating=null
         }
+        else{
+            if(!this.name) this.errors.push("Name required.")
+            if(!this.review) this.errors.push("Review required.")
+            if(!this.rating) this.errors.push("Rating required.")
+    
+        }
+        }
+        
     }
   })
 
