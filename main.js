@@ -1,7 +1,7 @@
 
 Vue.component('product',{
     props:{
-        premuim:{
+        primary:{
             type:Boolean,
             required:false,
         }
@@ -37,9 +37,7 @@ Vue.component('product',{
        <button :disabled="!inStock"  :class="{disabledButton:!inStock}" v-on:click="IncrCart" type="button" class="btn btn-primary">Add to cart</button>
        <button v-on:click="DecrCart" type="button" class="btn btn-danger">Remove from cart</button>
 
-        <div class="cart">
-            <p>Cart({{cart}})</p>
-        </div>
+  
         </div>
     </div>
 
@@ -69,19 +67,17 @@ Vue.component('product',{
             }
         ],
     
-        cart:0,
     }
     
 },
 methods:{
         IncrCart: function(){
-        this.cart+=1;
+            this.$emit('add-to-cart')
         },
         DecrCart: function(){
-            if (this.cart>0){
-                this.cart-=1;
-            }
-            else this.cart=0
+
+            this.$emit('delete-cart')
+         
             },
         updateProduct:function(index){
             this.SelectedVariant=index
@@ -101,7 +97,7 @@ computed:{
         return this.variants[this.SelectedVariant].variantQuantity
     },
     Shipping:function(){
-        if (this.premuim){
+        if (this.primary){
             return " "+"free"
         }
         return " "+ 2.99+"$";
@@ -112,7 +108,19 @@ computed:{
 var app=new Vue({
     el:"#app",
     data:{
-        premuim:true
+        premuim:false,
+        cart:0,
+    },
+    methods:{
+        updateCart:function(){
+            this.cart+=1;
+        },
+        DeleteCart:function(){
+            if (this.cart>0){
+                this.cart-=1;
+            }
+            else this.cart=0
+        }
     }
 })
 

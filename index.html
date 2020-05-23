@@ -11,7 +11,13 @@
 <body>
 
     <div id="app">
-        <product :premuim="premuim"></product>
+
+        <div class="cart">
+            <p>Cart({{cart}})</p>
+        </div>
+
+        <product :primary="premuim" @add-to-cart="updateCart" @delete-cart="DeleteCart"></product>
+       
 
     </div>
 
