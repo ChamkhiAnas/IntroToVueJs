@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
 </head>
 <body>
 
@@ -17,10 +19,27 @@
 
             <div class="product-info">
                 <h1>{{Product}}</h1>
-                <p v-if="InStock">In Stock</p>
-                <p v-else="InStock">Out of Stock</p> 
+                <!-- <p v-if="Inventory>10">In Stock</p> -->
+                <p v-else-if="Inventory<=10 && Inventory>0">Almost Sold Out</p> 
+                <p v-else>Out of Stock</p> 
+                <p v-show="indx">Showing is working</p>
                 <p>{{Description}}</p>
-                <a :href="Link">See more here</a>
+                <!-- <a :href="Link">See more here</a> -->
+
+                <ul>
+                    <li v-for="detail in details">{{detail}}</li>
+                </ul>
+
+               <div v-for="variant in variants":key="variant.variantId">
+                    <p @mouseover="updateProduct(variant.variantImage)">{{variant.variantColor}}</p>
+                </div>
+            
+                <div class="cartContainer">
+               <button v-on:click="AddTocart" type="button" class="btn btn-primary">Add to cart</button>
+                <div class="cart">
+                    <p>Cart({{cart}})</p>
+                </div>
+                </div>
             </div>
         
         </div>
