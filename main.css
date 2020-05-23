@@ -20,6 +20,7 @@
 .cartContainer{
     display: grid;
     grid-template-columns: 0.4fr 0.4fr 1fr;
+    margin-top: 20px;
     }
 .cart{
 
@@ -34,4 +35,16 @@
 
 .btn {
     margin-left: 5px;
+}
+
+
+.color-box{
+    width: 40px;
+    height: 40px;
+    margin-top: 5px;
+}
+
+.disabledButton{
+    background-color: #d8d8d8  !important;
+    border: none !important;
 }

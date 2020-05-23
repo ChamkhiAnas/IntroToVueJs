@@ -8,6 +8,7 @@ var app=new Vue({
         Link: "https://twitter.com/home",
         Inventory: 23,
         indx:false,
+        inStock:false,
         details:["80% cotton","20% Polyster","Gender Neutral"],
         variants:[
             {
