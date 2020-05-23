@@ -1,5 +1,11 @@
 
 Vue.component('product',{
+    props:{
+        premuim:{
+            type:Boolean,
+            required:false,
+        }
+    },
     template: `<div class="product">
 
     <div class="product-image">
@@ -14,6 +20,7 @@ Vue.component('product',{
 
         <p v-else-if="Inventory<=10 && Inventory>0">Almost Sold Out</p> 
         <p v-else>Out of Stock</p> 
+        <p>Shipping:{{Shipping}}</p>
         <p v-show="indx">Showing is working</p>
         <p>{{Description}}</p>
         <ul>
@@ -92,12 +99,21 @@ computed:{
     },
     inStock:function(){
         return this.variants[this.SelectedVariant].variantQuantity
+    },
+    Shipping:function(){
+        if (this.premuim){
+            return " "+"free"
+        }
+        return " "+ 2.99+"$";
     }
 }
 })
 
 var app=new Vue({
     el:"#app",
+    data:{
+        premuim:true
+    }
 })
 
 
