@@ -48,3 +48,19 @@
     background-color: #d8d8d8  !important;
     border: none !important;
 }
+
+.tab{
+    margin-right: 20px;
+
+}
+
+/* .tab:hover{
+   
+} */
+
+.activeTab{
+    color: green;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-position: below;
+}
